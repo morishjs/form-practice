@@ -3,27 +3,26 @@ import { createContext, PropsWithChildren, useMemo, useState } from "react";
 export const FormContext = createContext({
   setValues: (v: any) => {},
   values: {} as Record<string, any>,
-  setError: (v: any) => {},
+  setError: (source: string, message: string) => {},
   error: {} as Record<string, any>,
 });
 
 const SimpleForm = ({ children }: PropsWithChildren<{}>) => {
   const [values, setValues] = useState({});
-  const value = useMemo(() => ({ setValues, values }), [setValues, values]);
+  const [error, setError] = useState({});
 
-  // const[error,setError] = useState(false)
-
-  console.log("========");
-  console.log("value", value);
-  console.log("values", values);
+  const value = useMemo(
+    () => ({ setValues, values, setError, error }),
+    [setValues, values, setError, error]
+  );
 
   const onClick = (e: any) => {
     e.preventDefault();
-    // alert(JSON.stringify(values));
+    alert(JSON.stringify(values));
   };
 
   return (
-    <FormContext.Provider value={value}>
+    <FormContext.Provider value={{ ...value, setError }}>
       <form>
         {children}
         <button type={"submit"} onClick={onClick}>

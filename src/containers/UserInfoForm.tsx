@@ -3,25 +3,22 @@ import TextField from "../components/TextField";
 import { max, min } from "../validations";
 
 function UserInfoForm(): JSX.Element {
-
-  const emailCheck = (event: any) => {
-    if (event.target.value.length < 4) {
-      console.log(event.target.value);
-      event.target.nextSibling.textContent = "3자 이상 써주세요";
-    } else {
-      event.target.nextSibling.textContent = "";
-    }
-  };
-
-
+  // const emailCheck = (event: any) => {
+  //   if (event.target.value.length < 4) {
+  //     console.log(event.target.value);
+  //     event.target.nextSibling.textContent = "3자 이상 써주세요";
+  //   } else {
+  //     event.target.nextSibling.textContent = "";
+  //   }
+  // };
 
   return (
     <SimpleForm>
       <TextField
-        emailCheck={emailCheck}
         source={"name"}
         label={"이름"}
         validates={[min(2), max(4)]}
+        // emailCheck={emailCheck}
         //
       />
       <label></label>

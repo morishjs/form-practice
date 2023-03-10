@@ -8,13 +8,11 @@ const TextField: FunctionComponent<InputProps> = ({
   label,
   placeholder,
   type,
+  emailCheck,
 }) => {
   const { value, onChange, error } = useInput({ source, validates });
-  //useInput에 source를 넣고 계산 후 return 된 값을 쓰기 위함
-  //const props = useInput({source, validate})
-  //const value = props.value
-  //const onChange = props.onChange
 
+  console.log("error in Textfield", error);
   return (
     <div>
       <div style={{ display: "flex", gridGap: "8px" }}>
@@ -25,9 +23,10 @@ const TextField: FunctionComponent<InputProps> = ({
           name={source}
           type={type}
           placeholder={placeholder}
-          onKeyUp={this.emailCheck}
+          onKeyUp={emailCheck}
         />
       </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };

@@ -13,3 +13,8 @@ export const max = (num: number) => (v: string) => {
     return "";
   }
 };
+
+// [min(2), max(4)]
+// "2", ""
+// setError("2")
+// setError()

@@ -1,5 +1,5 @@
 import "./App.css";
-import LinkButton from "./components/LinkButton";
+import LinkButton from "./2components/LinkButton";
 
 function App() {
   return (

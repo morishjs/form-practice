@@ -8,7 +8,7 @@ function UserInfoForm(): JSX.Element {
       <TextField
         source={"name"}
         label={"이름"}
-        validates={[min(2), max(4)]}
+        validates={[min(3), max(5)]}
         placeholder={"이름"}
         //
       />

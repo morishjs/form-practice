@@ -11,17 +11,14 @@ function useInput(props: UseInputProps) {
     (value: string | number) => {
       //[min(5), max(10)]
       //func는 min or max
-      props.validates.forEach((validate) => {
-        const err: string = validate(value);
-        //props.source를 누가정하냐.....
-        //[]해야되는 이유....
-        if (err) {
-          setError({
-            ...error,
-            [props.source]: err,
-          });
-        }
-      });
+
+      const err = props.validates.map((validate) => validate(value));
+      if (err) {
+        setError({
+          ...error,
+          [props.source]: err,
+        });
+      }
 
       setValues({
         ...values,
